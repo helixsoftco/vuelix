@@ -29,6 +29,22 @@ See:
 - [vite-plugin-vue-layouts](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
 - [vite-plugin-pages](https://github.com/hannoeru/vite-plugin-pages)
 
+### 🔗 Path Aliasing
+
+`@/` is aliased to the `./src/` folder.
+
+For example, instead of having
+
+```ts
+import HelloWorld from '../../../components/HelloWorld.vue'
+```
+
+you can use
+
+```ts
+import HelloWorld from '@/components/HelloWorld.vue'
+```
+
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
