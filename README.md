@@ -8,8 +8,26 @@ This template should help get you started developing with Vue 3 and Typescript i
 
 Routes for `vue-router` will be auto-generated from Vue files in the `src/pages` using the file structure. 
 
-See: [vite-plugin-pages](https://github.com/hannoeru/vite-plugin-pages)
+See: 
+- [vite-plugin-pages](https://github.com/hannoeru/vite-plugin-pages)
 
+### 📑 Layouts system
+
+Vue components in the `src/layouts` dir as used as layouts.
+By default, `default.vue` will be used unless an alternative is specified in the route meta.
+
+You can specify the layout in the page's SFCs like this:
+
+```html
+<route lang="yaml">
+meta:
+  layout: home
+</route>
+```
+
+See: 
+- [vite-plugin-vue-layouts](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
+- [vite-plugin-pages](https://github.com/hannoeru/vite-plugin-pages)
 
 ## Recommended IDE Setup
 
