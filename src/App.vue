@@ -1,5 +1,9 @@
+<script setup lang="ts">
+import RouterViewTransition from '@/components/RouterViewTransition.vue'
+</script>
+
 <template>
-  <router-view></router-view>
+  <RouterViewTransition isRoot></RouterViewTransition>
 </template>
 
 <style>
