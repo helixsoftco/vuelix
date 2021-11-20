@@ -45,6 +45,26 @@ you can use
 import HelloWorld from '@/components/HelloWorld.vue'
 ```
 
+### ✨ Routes Transitions
+
+Route changes are animated. By default, the `fade` transition will be used unless an alternative is specified in the route meta.
+
+The `fade` and `slide-fade` transitions are available.
+You can specify the transition in the page's SFCs like this:
+
+```html
+<route lang="yaml">
+meta:
+  transition: slide-fade
+</route>
+```
+> *NOTE:* Transitions are not triggered between routes of the same type, therefore changing the parameters of the active route won't cause a route transition. This could be changed by using the `route.fullPath` instead of `route.name` as the key in [RouterViewTransition.vue](./src/components/RouterViewTransition.vue). More info: https://stackoverflow.com/a/70042452/4873750.
+
+> Route transitions can be deactivated by changing the provided `enable-route-transitions` value in [main.ts](./src/main.ts).
+
+See:
+- [RouterViewTransition.vue](./src/components/RouterViewTransition.vue)
+
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
