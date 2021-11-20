@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { inject } from 'vue';
 import { RouteLocationNormalized } from 'vue-router'
 
 interface Props {
@@ -15,6 +16,8 @@ const props = withDefaults(defineProps<Props>(), {
   isRoot: false 
 });
 
+const enableTransitions = inject('enable-route-transitions', true)
+
 function getKey(route: RouteLocationNormalized) {
   if (props.isRoot) {
     return String(route.meta.layout) || 'default'
@@ -24,7 +27,7 @@ function getKey(route: RouteLocationNormalized) {
 </script>
 
 <template>
-  <router-view v-slot="{ Component, route }">
+  <router-view v-if="enableTransitions" v-slot="{ Component, route }">
     <!-- Use any custom transition and fallback to `fade` -->
     <transition :name="route.meta.transition || 'fade'" mode="out-in">
       <!-- This div is required because <transition> requires a single children node -->
@@ -33,4 +36,6 @@ function getKey(route: RouteLocationNormalized) {
       </div>
     </transition>
   </router-view>
+
+  <router-view v-else></router-view>
 </template>

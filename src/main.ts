@@ -5,4 +5,5 @@ import router from './router'
 
 const app = createApp(App)
 app.use(router)
+app.provide('enable-route-transitions', true)
 app.mount('#app')
