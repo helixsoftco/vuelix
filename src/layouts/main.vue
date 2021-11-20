@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import RouterViewTransition from '@/components/RouterViewTransition.vue'
+</script>
+
 <template>
   <nav>
     <strong>PROJECT NAME</strong>
@@ -7,7 +11,8 @@
   </nav>
 
   <main>
-    <router-view></router-view>
+    <RouterViewTransition></RouterViewTransition>
+    <p>[Main Layout]</p>
   </main>
 </template>
 

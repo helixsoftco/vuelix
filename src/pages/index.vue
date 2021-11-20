@@ -5,8 +5,10 @@ import HelloWorld from '@/components/HelloWorld.vue'
 </script>
 
 <template>
-  <img alt="Vue logo" src="@/assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <HelloWorld title="Hi developer!" msg="This is the index page!" />
 
+  <p>Click on the links to test the route transitions:</p>
+  <router-link :to="{ name: 'about' }">To About</router-link>
+  <br>
   <router-link :to="{ name: 'home' }">To Home</router-link>
 </template>
