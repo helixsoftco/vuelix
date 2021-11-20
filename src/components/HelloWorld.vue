@@ -1,22 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 
-defineProps<{ msg: string }>()
+const props = defineProps<{ title: string, msg: string, likes?: number }>()
 
-const count = ref(0)
+const count = ref(props.likes || 0)
+
+watchEffect(() => { props.likes && (count.value = props.likes) })
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <img alt="Vue logo" src="@/assets/logo.png" style="height: 200px;" />
 
-  <p>
-    Recommended IDE setup:
-    <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
-    +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-  </p>
-
-  <p>See <code>README.md</code> for more information.</p>
+  <h1>{{ title }}</h1>
+  <p>{{ msg }}</p>
 
   <p>
     <a href="https://vitejs.dev/guide/features.html" target="_blank">
@@ -26,10 +22,8 @@ const count = ref(0)
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
   </p>
 
-  <button type="button" @click="count++">count is: {{ count }}</button>
   <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
+    <button type="button" @click="count++">Likes for this template: {{ count }}</button>
   </p>
 </template>
 
