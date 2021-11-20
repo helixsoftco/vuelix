@@ -15,11 +15,11 @@ watchEffect(() => { props.likes && (count.value = props.likes) })
   <p>{{ msg }}</p>
 
   <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Docs
+    <a href="https://helixsoft.com.co" target="_blank">
+      Helix Software
     </a>
     |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
+    <a href="https://www.instagram.com/helixsoft/" target="_blank">@helixsoft</a>
   </p>
 
   <p>
