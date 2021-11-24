@@ -94,9 +94,28 @@ See:
 
 - [RouterViewTransition.vue](./src/components/RouterViewTransition.vue)
 
+### 🪄 Eslint + Prettier
+
+This project comes with the recommended Eslint configuration for Vue 3 plus integration with Prettier.
+Prettier helps formatting code while Eslint helps catching bugs in development.
+
+When opening the project in VSCode, it will ask the developers to install Eslint and Prettier, because that way
+the VSCode [settings.json](.vscode/settings.json) will work and therefore both Prettier and Eslint fix will be
+executed when saving a file.
+
+Aditionally, commands to lint, check and autoformat code are available in the scripts of [package.json](./package.json)
+
+See:
+
+- [Eslint](https://eslint.org/)
+- [Prettier](https://prettier.io/docs/en/comparison.html)
+- [eslint-plugin-vue](https://eslint.vuejs.org/)
+- [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
+- [vue-eslint-parser](https://github.com/vuejs/vue-eslint-parser)
+
 ## Recommended IDE Setup
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) + [Eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
 ## Type Support For `.vue` Imports in TS
 
