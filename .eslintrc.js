@@ -5,7 +5,9 @@ module.exports = {
     node: true,
   },
   // The "prettier" extend comes from 'eslint-config-prettier' which disables eslint rules that may conflict with prettier
-  extends: ['eslint:recommended', 'plugin:vue/essential', 'plugin:@typescript-eslint/recommended', 'prettier'],
+  // Using vue3 recommended rules, See: https://eslint.vuejs.org/rules/#priority-c-recommended-minimizing-arbitrary-choices-and-cognitive-overhead-for-vue-js-3-x
+  extends: ['eslint:recommended', 'plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
+  parser: 'vue-eslint-parser',
   parserOptions: {
     ecmaVersion: 13,
     parser: '@typescript-eslint/parser',
