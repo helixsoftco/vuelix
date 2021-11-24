@@ -20,7 +20,7 @@ See:
 - [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup)
 - [Vite Docs](https://vitejs.dev/guide/features.html)
 
-### ⚙️ TypeScript and SCSS
+### 🦾 TypeScript and SCSS
 
 TypeScript and SCSS languages are supported and strongly recommended.
 
@@ -144,6 +144,65 @@ See:
 - [eslint-plugin-vue](https://eslint.vuejs.org/)
 - [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
 - [vue-eslint-parser](https://github.com/vuejs/vue-eslint-parser)
+
+### ⚙️ OpenAPI Client Generator
+
+Manually creating an API client is hard to maintain and time demanding,
+but thanks to OpenAPI and its generators we can now generate the entire API client from an `OpenAPI Spec`.
+
+To do so just place your spec in `spec/schema.yml`, then run:
+
+```
+npm run gen-api
+```
+
+> _NOTE:_ `Java` is required to be installed for the OpenAPI generator to work
+
+This would generate the API client in Typescript, so you will also get type hints and autocompletion in VSCode.
+The generated code is placed in `src/api-client`, that directory is ignored in GIT, because it can be generated always from the spec (`spec/schema.yml`), and it's not required to have it versioned.
+
+To use the generated APIs just initialize them and make it available for the rest of the application.
+The following is an example using Swagger Demo PetStore API:
+
+```ts
+// "api/index.ts"
+import { PetApi } from '@/api-client'
+export const petApi = new PetApi()
+```
+
+You can also configure the APIs parameters like `basePath` and provide your own `axios` instance with interceptors configured like this:
+
+```ts
+// "api/index.ts"
+import { PetApi } from '@/api-client'
+import { Configuration } from '@/api-client/configuration'
+import axiosInstance from './axios'
+
+// See Vite env vars: https://vitejs.dev/guide/env-and-mode.html
+const config = new Configuration({ basePath: import.meta.env.BASE_URL })
+export const petApi = new PetApi(config, undefined, axiosInstance)
+```
+
+Then in your Vue Components:
+
+```html
+<!-- "pages/home.vue" -->
+<script setup lang="ts">
+  import { petApi } from '@/api'
+  import { Pet, PetStatusEnum } from '@/api-client'
+  import { ref } from 'vue'
+
+  const pets = ref<Pet[]>()
+  const loading = ref(false)
+
+  async function testOpenAPI() {
+    loading.value = true
+    const { data } = await petApi.findPetsByStatus({ status: [PetStatusEnum.Available] })
+    pets.value = data.slice(0, 10)
+    loading.value = false
+  }
+</script>
+```
 
 ## Recommended IDE Setup
 

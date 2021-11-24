@@ -8,14 +8,17 @@
     "eslint": "npx eslint --ignore-path .prettierignore --ext .ts,.js,.vue .",
     "eslint-fix": "npx eslint --ignore-path .prettierignore --ext .ts,.js,.vue --fix .",
     "prettier": "npx prettier --write .",
-    "prettier-check": "npx prettier --check ."
+    "prettier-check": "npx prettier --check .",
+    "gen-api": "rm -rf src/api-client && npx @openapitools/openapi-generator-cli generate -i ./spec/schema.yml -g typescript-axios -o src/api-client --additional-properties withSeparateModelsAndApi=true,supportsES6=true,useSingleRequestParameter=true,apiPackage=api,modelPackage=models"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "vue": "^3.2.16",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.0.10",
+    "@openapitools/openapi-generator-cli": "^2.4.18",
     "@types/node": "^16.11.9",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
