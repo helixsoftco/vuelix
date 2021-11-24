@@ -9,6 +9,6 @@ meta:
   <p>This is the profile page</p>
 
   <router-link :to="{ name: 'home' }">To Home</router-link>
-  <br>
+  <br />
   <router-link :to="{ name: 'index' }">To Index</router-link>
 </template>

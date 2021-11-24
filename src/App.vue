@@ -3,7 +3,7 @@ import RouterViewTransition from '@/components/RouterViewTransition.vue'
 </script>
 
 <template>
-  <RouterViewTransition isRoot></RouterViewTransition>
+  <RouterViewTransition is-root></RouterViewTransition>
 </template>
 
 <style>

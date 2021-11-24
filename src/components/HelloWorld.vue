@@ -1,23 +1,23 @@
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
 
-const props = defineProps<{ title: string, msg: string, likes?: number }>()
+const props = defineProps<{ title: string; msg: string; likes?: number }>()
 
 const count = ref(props.likes || 0)
 
-watchEffect(() => { props.likes && (count.value = props.likes) })
+watchEffect(() => {
+  props.likes && (count.value = props.likes)
+})
 </script>
 
 <template>
-  <img alt="Vue logo" src="@/assets/logo.png" style="height: 200px;" />
+  <img alt="Vue logo" src="@/assets/logo.png" style="height: 200px" />
 
   <h1>{{ title }}</h1>
   <p>{{ msg }}</p>
 
   <p>
-    <a href="https://helixsoft.com.co" target="_blank">
-      Helix Software
-    </a>
+    <a href="https://helixsoft.com.co" target="_blank"> Helix Software </a>
     |
     <a href="https://www.instagram.com/helixsoft/" target="_blank">@helixsoft</a>
   </p>

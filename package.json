@@ -4,7 +4,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "eslint": "npx eslint --ignore-path .prettierignore --ext .ts,.js,.vue .",
+    "eslint-fix": "npx eslint --ignore-path .prettierignore --ext .ts,.js,.vue --fix .",
+    "prettier": "npx prettier --write .",
+    "prettier-check": "npx prettier --check ."
   },
   "dependencies": {
     "vue": "^3.2.16",
@@ -12,12 +16,20 @@
   },
   "devDependencies": {
     "@types/node": "^16.11.9",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
     "@vitejs/plugin-vue": "^1.9.3",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.1.1",
+    "prettier": "^2.4.1",
     "sass": "^1.43.4",
     "typescript": "^4.4.3",
     "vite": "^2.6.4",
     "vite-plugin-pages": "^0.19.0-beta.3",
     "vite-plugin-vue-layouts": "^0.5.0",
+    "vue-eslint-parser": "^8.0.1",
     "vue-tsc": "^0.3.0"
   }
 }

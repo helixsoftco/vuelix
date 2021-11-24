@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { inject } from 'vue';
+import { inject } from 'vue'
 import { RouteLocationNormalized } from 'vue-router'
 
 interface Props {
-  /** 
+  /**
    * Root transitions happen between layout changes. e.g. from `default` layout to `main` and viceversa.
    * This should be "true" for the App.vue component
-   * Non-root transitions happen between pages of the same layout, e.g. from `home` to `profile` both using the `main` 
+   * Non-root transitions happen between pages of the same layout, e.g. from `home` to `profile` both using the `main`
    * layout
-  */
+   */
   isRoot?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), { 
-  isRoot: false 
-});
+const props = withDefaults(defineProps<Props>(), {
+  isRoot: false,
+})
 
 const enableTransitions = inject('enable-route-transitions', true)
 
