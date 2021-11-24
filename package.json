@@ -5,6 +5,8 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
+    "eslint": "npx eslint --ignore-path .prettierignore --ext .ts,.js,.vue .",
+    "eslint-fix": "npx eslint --ignore-path .prettierignore --ext .ts,.js,.vue --fix .",
     "prettier": "npx prettier --write .",
     "prettier-check": "npx prettier --check ."
   },
@@ -27,6 +29,7 @@
     "vite": "^2.6.4",
     "vite-plugin-pages": "^0.19.0-beta.3",
     "vite-plugin-vue-layouts": "^0.5.0",
+    "vue-eslint-parser": "^8.0.1",
     "vue-tsc": "^0.3.0"
   }
 }
