@@ -5,9 +5,7 @@ import RouterViewTransition from '@/components/RouterViewTransition.vue'
 <template>
   <nav>
     <strong>PROJECT NAME</strong>
-    <div>
-      Hello Developer!
-    </div>
+    <div>Hello Developer!</div>
   </nav>
 
   <main>

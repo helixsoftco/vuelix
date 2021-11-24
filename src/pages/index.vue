@@ -9,6 +9,6 @@ import HelloWorld from '@/components/HelloWorld.vue'
 
   <p>Click on the links to test the route transitions:</p>
   <router-link :to="{ name: 'about' }">To About</router-link>
-  <br>
+  <br />
   <router-link :to="{ name: 'home' }">To Home</router-link>
 </template>
