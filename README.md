@@ -204,6 +204,12 @@ Then in your Vue Components:
 </script>
 ```
 
+See:
+
+- [OpenAPI Specification](https://swagger.io/docs/specification/about/)
+- [OpenAPI Generator](https://openapi-generator.tech/)
+- [OpenAPI typescript-axios generator](https://openapi-generator.tech/docs/generators/typescript-axios)
+
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) + [Eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
