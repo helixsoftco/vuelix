@@ -8,7 +8,8 @@
     "eslint": "npx eslint --ignore-path .prettierignore --ext .ts,.js,.vue .",
     "eslint-fix": "npx eslint --ignore-path .prettierignore --ext .ts,.js,.vue --fix .",
     "prettier": "npx prettier --write .",
-    "prettier-check": "npx prettier --check ."
+    "prettier-check": "npx prettier --check .",
+    "gen-api": "rm -rf api-client && npx @openapitools/openapi-generator-cli generate -i ./spec/schema.yml -g typescript-axios -o src/api-client --additional-properties withSeparateModelsAndApi=true,supportsES6=true,useSingleRequestParameter=true,apiPackage=api,modelPackage=models"
   },
   "dependencies": {
     "vue": "^3.2.16",
