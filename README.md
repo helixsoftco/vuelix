@@ -1,8 +1,30 @@
 # Vue 3 + Typescript + Vite
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This template should help get you started developing with Vue 3 and Typescript in Vite.
 
 ## Features
+
+### 🚀 Vue 3 + Vite 2
+
+The version 3 of Vue with its powerful **Composition API** is available in this project, 
+along with the new `<script setup>` SFCs syntax.
+
+Vite is the lightning Fast Next Generation Frontend Tooling that highly improves the development experience along with
+all the community-created plugins.
+> *NOTE:* The initial state of this project was generated using Vite oficial scaffolding: `npm init vite@latest`
+
+See:
+- [Vue 3 Docs](https://v3.vuejs.org)
+- [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup)
+- [Vite Docs](https://vitejs.dev/guide/features.html)
+
+### ⚙️ TypeScript and SCSS
+
+TypeScript and SCSS languages are supported and strongly recommended.
+
+See:
+- [TypeScript](https://www.typescriptlang.org/)
+- [SCSS](https://sass-lang.com/)
 
 ### 🗂 File system routing
 
