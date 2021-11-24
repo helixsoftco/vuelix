@@ -5,7 +5,7 @@ import RouterViewTransition from '@/components/RouterViewTransition.vue'
 <template>
   <nav>
     <strong>PROJECT NAME</strong>
-    <div>Hello Developer!</div>
+    <div class="user"><i-mdi-account /> Hello Developer!</div>
   </nav>
 
   <main>
@@ -14,11 +14,20 @@ import RouterViewTransition from '@/components/RouterViewTransition.vue'
   </main>
 </template>
 
-<style>
+<style lang="scss" scoped>
 nav {
   display: flex;
   border-bottom: 1px solid #dcdcdc;
   padding: 10px;
   justify-content: space-between;
+
+  .user {
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: 8px;
+    }
+  }
 }
 </style>
