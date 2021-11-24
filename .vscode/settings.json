@@ -21,5 +21,8 @@
   "editor.rulers": [120],
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "prettier.requireConfig": true
+  "prettier.requireConfig": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }
