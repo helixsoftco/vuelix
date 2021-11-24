@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "prettier": "npx prettier --write .",
+    "prettier-check": "npx prettier --check ."
   },
   "dependencies": {
     "vue": "^3.2.16",
@@ -12,7 +14,12 @@
   },
   "devDependencies": {
     "@types/node": "^16.11.9",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
     "@vitejs/plugin-vue": "^1.9.3",
+    "eslint": "^8.3.0",
+    "eslint-plugin-vue": "^8.1.1",
+    "prettier": "^2.4.1",
     "sass": "^1.43.4",
     "typescript": "^4.4.3",
     "vite": "^2.6.4",
