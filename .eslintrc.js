@@ -4,6 +4,12 @@ module.exports = {
     es2021: true,
     node: true,
   },
+  // Avoids the eslint: no-undef in "<script setup>" compiler macros
+  globals: {
+    defineProps: 'readonly',
+    defineEmits: 'readonly',
+    withDefaults: 'readonly',
+  },
   // The "prettier" extend comes from 'eslint-config-prettier' which disables eslint rules that may conflict with prettier
   // Using vue3 recommended rules, See: https://eslint.vuejs.org/rules/#priority-c-recommended-minimizing-arbitrary-choices-and-cognitive-overhead-for-vue-js-3-x
   extends: ['eslint:recommended', 'plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
