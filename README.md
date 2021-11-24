@@ -72,6 +72,38 @@ you can use
 import HelloWorld from '@/components/HelloWorld.vue'
 ```
 
+### 😃 Universal Icons Framework
+
+Use icons from any icon set, one syntax for all icons: Material Design Icons, Bootstrap Icons, Font Awesome, etc.
+All icons libraries are available powered by [iconify](https://iconify.design/) and [unplugin-icons](https://github.com/antfu/unplugin-icons). And don't worry, **only** the icons you use would be included in the final bundle,
+keeping the production build lightweight.
+
+The usage is simple, if you want for instance a Material Design Icon (mdi) with name "thumb-up",
+then just place this inside your template:
+
+```html
+<i-mdi-thumb-up />
+```
+
+Just by placing it, the `unplugin-icons/resolver` would look for the corresponding icon and in case the related
+iconify icon set is not installed, it would automatically install it using `npm`, e.g. `@iconify-json/mdi`.
+
+The convention to use icons is as follows:
+
+```
+{prefix}-{collection}-{icon}
+```
+
+Where the `prefix` is "i", the `collection` is the collection ID from https://icon-sets.iconify.design/,
+and finally the `icon` is the icon name.
+
+See:
+
+- [unplugin-icons](https://github.com/antfu/unplugin-icons)
+- [iconify](https://iconify.design/)
+- [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)
+- [Icônes - to search for icons available in iconify](https://icones.js.org/)
+
 ### ✨ Routes Transitions
 
 Route changes are animated. By default, the `fade` transition will be used unless an alternative is specified in the route meta.
