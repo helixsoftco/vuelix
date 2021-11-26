@@ -9,6 +9,7 @@ export function setupDevtools(app: App, plugin: AuthPlugin) {
     {
       id: 'basic-auth-plugin',
       label: 'Basic Auth Plugin',
+      componentStateTypes: [stateType],
       app,
     },
     (api) => {
