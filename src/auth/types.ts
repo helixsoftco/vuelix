@@ -1,3 +1,4 @@
+import { AxiosInstance } from 'axios'
 import { RouteLocationRaw, RouteRecordName } from 'vue-router'
 
 export interface User {
@@ -21,9 +22,17 @@ export interface AuthPlugin {
   readonly logout: () => Promise<void>
 }
 
-export interface AuthOptions {
-  loginRouteName?: RouteRecordName
-  loginRedirectRoute?: RouteLocationRaw
-  logoutRedirectRoute?: RouteLocationRaw
-  configureNavigationGuards?: boolean
+export interface AuthAxiosConfig {
+  instance: AxiosInstance
+  autoAddAuthorizationHeader: boolean
 }
+
+export interface RequiredAuthOptions {
+  loginRouteName: RouteRecordName
+  loginRedirectRoute: RouteLocationRaw
+  logoutRedirectRoute: RouteLocationRaw
+  autoConfigureNavigationGuards: boolean
+  axios?: AuthAxiosConfig
+}
+
+export type AuthOptions = Partial<RequiredAuthOptions>

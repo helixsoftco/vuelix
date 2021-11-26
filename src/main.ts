@@ -7,7 +7,7 @@ import router from './router'
 const auth = createAuth({
   loginRedirectRoute: { name: 'home' },
   logoutRedirectRoute: { name: 'index' },
-  configureNavigationGuards: true,
+  autoConfigureNavigationGuards: true,
 })
 
 const app = createApp(App)

@@ -2,11 +2,11 @@ import router from '@/router'
 import { App, computed, reactive, readonly, ref } from 'vue'
 import { setupDevtools } from './devtools'
 import { configureNavigationGuards } from './navigationGuards'
-import { ANONYMOUS_USER, AuthOptions, AuthPlugin, User } from './types'
+import { ANONYMOUS_USER, AuthOptions, AuthPlugin, RequiredAuthOptions, User } from './types'
 
 export let authInstance: AuthPlugin | undefined = undefined
 
-function setupAuthPlugin(options: Required<AuthOptions>): AuthPlugin {
+function setupAuthPlugin(options: RequiredAuthOptions): AuthPlugin {
   const isAuthenticated = ref(false)
   const user = ref<User>({ ...ANONYMOUS_USER })
   const userFullName = computed(() => {
@@ -55,15 +55,15 @@ function setupAuthPlugin(options: Required<AuthOptions>): AuthPlugin {
   return readonly(unWrappedRefs)
 }
 
-const defaultOptions = {
+const defaultOptions: RequiredAuthOptions = {
   loginRedirectRoute: '/',
   logoutRedirectRoute: '/',
   loginRouteName: 'login',
   autoConfigureNavigationGuards: true,
 }
-export function createAuth(appOptions: AuthOptions) {
+export function createAuth(appOptions: AuthOptions = {}) {
   // Fill default values to options that were not received
-  const options: Required<AuthOptions> = { ...defaultOptions, ...appOptions }
+  const options: RequiredAuthOptions = { ...defaultOptions, ...appOptions }
 
   return {
     install: (app: App): void => {
