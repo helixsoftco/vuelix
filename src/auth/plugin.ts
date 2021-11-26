@@ -53,6 +53,7 @@ export function createAuth(options: AuthOptions = defaultOptions) {
       app.provide(authInjectionKey, authPlugin)
 
       if (import.meta.env.DEV) {
+        // @ts-expect-error: until it gets fixed in devtools
         setupDevtools(app, authPlugin)
       }
     },
