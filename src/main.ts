@@ -1,11 +1,13 @@
 import '@/assets/scss/app.scss'
 import { createApp } from 'vue'
+import { createAuth } from './auth'
 import App from './App.vue'
 import router from './router'
-import { createAuth } from './auth'
 
 const auth = createAuth({
+  loginRedirectRoute: { name: 'home' },
   logoutRedirectRoute: { name: 'index' },
+  configureNavigationGuards: true,
 })
 
 const app = createApp(App)
