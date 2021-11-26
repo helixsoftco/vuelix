@@ -1,5 +1,4 @@
-import { inject } from 'vue'
-import { authInjectionKey } from './injectionKeys'
+import { authInstance } from './plugin'
 import { AuthPlugin } from './types'
 
 /**
@@ -8,5 +7,5 @@ import { AuthPlugin } from './types'
  */
 export function useAuth(): AuthPlugin {
   // eslint-disable-next-line
-  return inject(authInjectionKey)!
+  return authInstance!
 }

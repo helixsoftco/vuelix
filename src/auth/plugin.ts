@@ -1,10 +1,11 @@
 import router from '@/router'
 import { App, reactive, readonly, ref } from 'vue'
 import { setupDevtools } from './devtools'
-import { authInjectionKey } from './injectionKeys'
 import { ANONYMOUS_USER, AuthOptions, AuthPlugin, User } from './types'
 
-function useAuthPlugin(options: AuthOptions): AuthPlugin {
+export let authInstance: AuthPlugin | undefined = undefined
+
+function setupAuthPlugin(options: AuthOptions): AuthPlugin {
   const isAuthenticated = ref(false)
   const user = ref<User>({ ...ANONYMOUS_USER })
 
@@ -48,13 +49,12 @@ const defaultOptions = { logoutRedirectRoute: '/' }
 export function createAuth(options: AuthOptions = defaultOptions) {
   return {
     install: (app: App): void => {
-      const authPlugin = useAuthPlugin(options)
-      app.config.globalProperties.$auth = authPlugin
-      app.provide(authInjectionKey, authPlugin)
+      authInstance = setupAuthPlugin(options)
+      app.config.globalProperties.$auth = authInstance
 
       if (import.meta.env.DEV) {
         // @ts-expect-error: until it gets fixed in devtools
-        setupDevtools(app, authPlugin)
+        setupDevtools(app, authInstance)
       }
     },
   }
