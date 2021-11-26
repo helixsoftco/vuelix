@@ -3,11 +3,16 @@ import { createApp } from 'vue'
 import { createAuth } from './auth'
 import App from './App.vue'
 import router from './router'
+import axiosInstance from './api/axios'
 
 const auth = createAuth({
   loginRedirectRoute: { name: 'home' },
   logoutRedirectRoute: { name: 'index' },
   autoConfigureNavigationGuards: true,
+  axios: {
+    instance: axiosInstance,
+    autoAddAuthorizationHeader: true,
+  },
 })
 
 const app = createApp(App)

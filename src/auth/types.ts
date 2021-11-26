@@ -18,6 +18,7 @@ export interface AuthPlugin {
   readonly user: User
   readonly isAuthenticated: boolean
   readonly userFullName: string
+  readonly accessToken?: string
   readonly login: () => Promise<void>
   readonly logout: () => Promise<void>
 }
@@ -25,6 +26,7 @@ export interface AuthPlugin {
 export interface AuthAxiosConfig {
   instance: AxiosInstance
   autoAddAuthorizationHeader: boolean
+  authorizationHeaderPrefix?: string
 }
 
 export interface RequiredAuthOptions {

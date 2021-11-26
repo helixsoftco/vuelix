@@ -1,6 +1,7 @@
 import router from '@/router'
 import { App, computed, reactive, readonly, ref } from 'vue'
 import { setupDevtools } from './devtools'
+import { configureAuthorizationHeaderInterceptor } from './interceptors'
 import { configureNavigationGuards } from './navigationGuards'
 import { ANONYMOUS_USER, AuthOptions, AuthPlugin, RequiredAuthOptions, User } from './types'
 
@@ -8,6 +9,7 @@ export let authInstance: AuthPlugin | undefined = undefined
 
 function setupAuthPlugin(options: RequiredAuthOptions): AuthPlugin {
   const isAuthenticated = ref(false)
+  const accessToken = ref<string>()
   const user = ref<User>({ ...ANONYMOUS_USER })
   const userFullName = computed(() => {
     let fullname = user.value.firstName
@@ -27,12 +29,14 @@ function setupAuthPlugin(options: RequiredAuthOptions): AuthPlugin {
     }
     user.value = authenticatedUser
     isAuthenticated.value = true
+    accessToken.value = '12345'
     router.push(router.currentRoute.value.query.redirectTo?.toString() || options.loginRedirectRoute)
   }
 
   async function logout() {
     user.value = { ...ANONYMOUS_USER }
     isAuthenticated.value = false
+    accessToken.value = undefined
     router.push(options.logoutRedirectRoute)
   }
 
@@ -46,6 +50,7 @@ function setupAuthPlugin(options: RequiredAuthOptions): AuthPlugin {
    */
   const unWrappedRefs = reactive({
     isAuthenticated,
+    accessToken,
     user,
     userFullName,
     login,
@@ -72,6 +77,10 @@ export function createAuth(appOptions: AuthOptions = {}) {
 
       if (options.autoConfigureNavigationGuards) {
         configureNavigationGuards(router, options)
+      }
+
+      if (options.axios?.autoAddAuthorizationHeader) {
+        configureAuthorizationHeaderInterceptor(options.axios.instance, options.axios.authorizationHeaderPrefix)
       }
 
       if (import.meta.env.DEV) {
