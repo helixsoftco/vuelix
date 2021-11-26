@@ -1,4 +1,4 @@
-import { RouteLocationRaw } from 'vue-router'
+import { RouteLocationRaw, RouteRecordName } from 'vue-router'
 
 export interface User {
   id?: string
@@ -22,6 +22,8 @@ export interface AuthPlugin {
 }
 
 export interface AuthOptions {
-  loginRedirectRoute: RouteLocationRaw
-  logoutRedirectRoute: RouteLocationRaw
+  loginRouteName?: RouteRecordName
+  loginRedirectRoute?: RouteLocationRaw
+  logoutRedirectRoute?: RouteLocationRaw
+  configureNavigationGuards?: boolean
 }

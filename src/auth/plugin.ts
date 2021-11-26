@@ -1,11 +1,12 @@
 import router from '@/router'
 import { App, computed, reactive, readonly, ref } from 'vue'
 import { setupDevtools } from './devtools'
+import { setupNavigationGuards } from './navigationGuards'
 import { ANONYMOUS_USER, AuthOptions, AuthPlugin, User } from './types'
 
 export let authInstance: AuthPlugin | undefined = undefined
 
-function setupAuthPlugin(options: AuthOptions): AuthPlugin {
+function setupAuthPlugin(options: Required<AuthOptions>): AuthPlugin {
   const isAuthenticated = ref(false)
   const user = ref<User>({ ...ANONYMOUS_USER })
   const userFullName = computed(() => {
@@ -57,12 +58,21 @@ function setupAuthPlugin(options: AuthOptions): AuthPlugin {
 const defaultOptions = {
   loginRedirectRoute: '/',
   logoutRedirectRoute: '/',
+  loginRouteName: 'login',
+  configureNavigationGuards: true,
 }
-export function createAuth(options: AuthOptions = defaultOptions) {
+export function createAuth(appOptions: AuthOptions) {
+  // Fill default values to options that were not received
+  const options: Required<AuthOptions> = { ...defaultOptions, ...appOptions }
+
   return {
     install: (app: App): void => {
       authInstance = setupAuthPlugin(options)
       app.config.globalProperties.$auth = authInstance
+
+      if (options.configureNavigationGuards) {
+        setupNavigationGuards(router, options)
+      }
 
       if (import.meta.env.DEV) {
         // @ts-expect-error: until it gets fixed in devtools
