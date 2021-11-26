@@ -1,5 +1,5 @@
 import router from '@/router'
-import { App, reactive, readonly, ref } from 'vue'
+import { App, computed, reactive, readonly, ref } from 'vue'
 import { setupDevtools } from './devtools'
 import { ANONYMOUS_USER, AuthOptions, AuthPlugin, User } from './types'
 
@@ -8,6 +8,13 @@ export let authInstance: AuthPlugin | undefined = undefined
 function setupAuthPlugin(options: AuthOptions): AuthPlugin {
   const isAuthenticated = ref(false)
   const user = ref<User>({ ...ANONYMOUS_USER })
+  const userFullName = computed(() => {
+    let fullname = user.value.firstName
+    if (user.value.lastName) {
+      fullname += ` ${user.value.lastName}`
+    }
+    return fullname
+  })
 
   async function login() {
     // TODO: Implement login logic using your Auth Provider, E.g. Auth0
@@ -19,6 +26,7 @@ function setupAuthPlugin(options: AuthOptions): AuthPlugin {
     }
     user.value = authenticatedUser
     isAuthenticated.value = true
+    router.push(router.currentRoute.value.query.redirectTo?.toString() || options.loginRedirectRoute)
   }
 
   async function logout() {
@@ -38,6 +46,7 @@ function setupAuthPlugin(options: AuthOptions): AuthPlugin {
   const unWrappedRefs = reactive({
     isAuthenticated,
     user,
+    userFullName,
     login,
     logout,
   })
@@ -45,7 +54,10 @@ function setupAuthPlugin(options: AuthOptions): AuthPlugin {
   return readonly(unWrappedRefs)
 }
 
-const defaultOptions = { logoutRedirectRoute: '/' }
+const defaultOptions = {
+  loginRedirectRoute: '/',
+  logoutRedirectRoute: '/',
+}
 export function createAuth(options: AuthOptions = defaultOptions) {
   return {
     install: (app: App): void => {
