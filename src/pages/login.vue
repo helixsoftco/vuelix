@@ -1,7 +1,7 @@
 <template>
-  <h2>Login Page</h2>
+  <h1>Login Page</h1>
   <p v-if="$route.query.redirectTo" style="color: brown">You need to be Authenticated in order to see this page</p>
-  <button @click="$auth.login">Login</button>
+  <button @click="$auth.login">Login with Auth Plugin</button>
 
   <br /><br />
   <router-link :to="{ name: 'index' }">To Index</router-link>
