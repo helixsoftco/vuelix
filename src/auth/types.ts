@@ -16,10 +16,12 @@ export const ANONYMOUS_USER: Readonly<User> = Object.freeze({
 export interface AuthPlugin {
   readonly user: User
   readonly isAuthenticated: boolean
+  readonly userFullName: string
   readonly login: () => Promise<void>
   readonly logout: () => Promise<void>
 }
 
 export interface AuthOptions {
+  loginRedirectRoute: RouteLocationRaw
   logoutRedirectRoute: RouteLocationRaw
 }
