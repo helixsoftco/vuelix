@@ -1,7 +1,7 @@
 import router from '@/router'
 import { App, computed, reactive, readonly, ref } from 'vue'
 import { setupDevtools } from './devtools'
-import { setupNavigationGuards } from './navigationGuards'
+import { configureNavigationGuards } from './navigationGuards'
 import { ANONYMOUS_USER, AuthOptions, AuthPlugin, User } from './types'
 
 export let authInstance: AuthPlugin | undefined = undefined
@@ -59,7 +59,7 @@ const defaultOptions = {
   loginRedirectRoute: '/',
   logoutRedirectRoute: '/',
   loginRouteName: 'login',
-  configureNavigationGuards: true,
+  autoConfigureNavigationGuards: true,
 }
 export function createAuth(appOptions: AuthOptions) {
   // Fill default values to options that were not received
@@ -70,8 +70,8 @@ export function createAuth(appOptions: AuthOptions) {
       authInstance = setupAuthPlugin(options)
       app.config.globalProperties.$auth = authInstance
 
-      if (options.configureNavigationGuards) {
-        setupNavigationGuards(router, options)
+      if (options.autoConfigureNavigationGuards) {
+        configureNavigationGuards(router, options)
       }
 
       if (import.meta.env.DEV) {

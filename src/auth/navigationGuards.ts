@@ -2,7 +2,7 @@ import { RouteLocationRaw, Router } from 'vue-router'
 import { AuthOptions } from './types'
 import { useAuth } from './useAuth'
 
-export function setupNavigationGuards(router: Router, options: Required<AuthOptions>) {
+export function configureNavigationGuards(router: Router, options: Required<AuthOptions>) {
   router.beforeEach(async (to): Promise<boolean | RouteLocationRaw> => {
     const auth = useAuth()
 
