@@ -5,6 +5,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
+    "type-check": "vue-tsc --noEmit",
     "eslint": "npx eslint --ignore-path .prettierignore --ext .ts,.js,.vue .",
     "eslint-fix": "npx eslint --ignore-path .prettierignore --ext .ts,.js,.vue --fix .",
     "prettier": "npx prettier --write .",
