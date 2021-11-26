@@ -5,7 +5,10 @@ import RouterViewTransition from '@/components/RouterViewTransition.vue'
 <template>
   <nav>
     <strong>PROJECT NAME</strong>
-    <div class="user"><i-mdi-account /> Hello Developer!</div>
+    <div class="user">
+      <i-mdi-account /> Hello {{ $auth.userFullName }}!&nbsp;
+      <button @click="$auth.logout">Logout</button>
+    </div>
   </nav>
 
   <main>
