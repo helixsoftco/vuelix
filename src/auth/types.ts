@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios'
-import { RouteLocationRaw, RouteRecordName } from 'vue-router'
+import { RouteLocationRaw, Router, RouteRecordName } from 'vue-router'
 
 export interface User {
   id?: string
@@ -30,6 +30,7 @@ export interface AuthAxiosConfig {
 }
 
 export interface RequiredAuthOptions {
+  router: Router
   loginRouteName: RouteRecordName
   loginRedirectRoute: RouteLocationRaw
   logoutRedirectRoute: RouteLocationRaw
@@ -37,4 +38,11 @@ export interface RequiredAuthOptions {
   axios?: AuthAxiosConfig
 }
 
-export type AuthOptions = Partial<RequiredAuthOptions>
+/*
+ * Make all optional but router
+ * See: https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype
+ * See: https://stackoverflow.com/a/51507473/4873750
+ */
+export interface AuthOptions extends Omit<Partial<RequiredAuthOptions>, 'router'> {
+  router: Router
+}

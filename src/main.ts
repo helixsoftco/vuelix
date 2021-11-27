@@ -6,6 +6,7 @@ import router from './router'
 import axiosInstance from './api/axios'
 
 const auth = createAuth({
+  router,
   loginRedirectRoute: { name: 'home' },
   logoutRedirectRoute: { name: 'index' },
   autoConfigureNavigationGuards: true,
