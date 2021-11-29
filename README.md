@@ -312,7 +312,6 @@ export default axiosInstance
 
 ```ts
 // main.ts
-import '@/assets/scss/app.scss'
 import { createApp } from 'vue'
 import { createAuth } from './auth'
 import App from './App.vue'
@@ -332,6 +331,13 @@ const app = createApp(App)
 app.use(router)
 app.use(auth)
 ```
+
+See:
+
+- [Auth System](./src/auth)
+- [Vue Router - Navigation Guards](https://next.router.vuejs.org/guide/advanced/navigation-guards.html)
+- [Axios - Interceptors](https://github.com/axios/axios#interceptors)
+- [Vue Devtools - Plugin Registration](https://devtools.vuejs.org/plugin/plugins-guide.html#registering-your-plugin)
 
 ## Recommended IDE Setup
 
