@@ -6,3 +6,18 @@
 html {
   font-size: 16px; // 1rem
 }
+
+html,
+body,
+#app,
+.router-view-root-transition-wrapper,
+.router-view-transition-wrapper {
+  height: 100%;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center; // TODO: Remove this
+}

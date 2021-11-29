@@ -11,7 +11,7 @@ import RouterViewTransition from '@/components/RouterViewTransition.vue'
     </div>
   </nav>
 
-  <main class="mt-3">
+  <main class="pt-3">
     <RouterViewTransition></RouterViewTransition>
     <p>[Main Layout]</p>
   </main>
