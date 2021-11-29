@@ -255,6 +255,9 @@ if (auth.isAuthenticated) {
 </script>
 ```
 
+Aditionally, the auth plugin can be inspected in the **Vue's Devtools panel** when having the extension in the browser.
+The plugin's values are displayed when inspecting any component.
+
 #### The Navigation Guards
 
 The navigation guards protects pages from non-authenticated users and redirect them to the login page,
