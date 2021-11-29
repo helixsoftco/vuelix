@@ -1,1 +1,8 @@
+@import './variables';
+@import 'bootstrap/scss/bootstrap';
+
 @import './transitions';
+
+html {
+  font-size: 16px; // 1rem
+}
