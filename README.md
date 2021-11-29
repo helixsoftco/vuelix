@@ -210,6 +210,129 @@ See:
 - [OpenAPI Generator](https://openapi-generator.tech/)
 - [OpenAPI typescript-axios generator](https://openapi-generator.tech/docs/generators/typescript-axios)
 
+### 👤 Authentication System
+
+The auth system consist on three main parts:
+
+- The Plugin
+- The Navigation Guards
+- The Axios Interceptors
+
+#### The Auth Plugin
+
+The plugin is installed in Vue's `globalProperties` with the name `$auth`, it includes an `isAuthenticated` property,
+an `user` object, an `accessToken` plus the `login` and `logout` functions. It can be used in templates like this:
+
+```html
+<span v-if="$auth.isAuthenticated">
+  Authenticated as <b>{{ $auth.user.email }}</b>
+  <button @click="$auth.logout">Logout</button>
+</span>
+<span v-else>Not Authenticated</span>
+```
+
+The `auth` instance is created using the composition API, therefore we can alternatively retrieve it outside of
+components with the `useAuth` function:
+
+```ts
+import { useAuth } from './useAuth'
+
+const auth = useAuth()
+if (auth.isAuthenticated) {
+  console.log(auth.userFullName)
+}
+```
+
+```html
+<script setup lang="ts">
+  import { useAuth } from './useAuth'
+  import { watchEffect } from 'vue'
+
+  const auth = useAuth()
+  watchEffect(() => {
+    console.log(auth.isAuthenticated)
+  })
+</script>
+```
+
+Aditionally, the auth plugin can be inspected in the **Vue's Devtools panel** when having the extension in the browser.
+The plugin's values are displayed when inspecting any component.
+
+#### The Navigation Guards
+
+The navigation guards protects pages from non-authenticated users and redirect them to the login page,
+by default **all** pages but the `login` page are protected.
+
+In order to make a page available for non-authenticated users, a route meta boolean called `public` needs to be
+configured in the page. E.g:
+
+```vue
+<!-- pages/index.html -->
+<route lang="yaml">
+meta:
+  public: true
+</route>
+```
+
+The navigation guards can be disabled by changing the `autoConfigureNavigationGuards` when configuring the auth system:
+
+```ts
+// main.ts
+import { createApp } from 'vue'
+import { createAuth } from './auth'
+import App from './App.vue'
+import router from './router'
+
+const auth = createAuth({
+  router,
+  loginRouteName: 'login',
+  autoConfigureNavigationGuards: false,
+})
+
+const app = createApp(App)
+app.use(router)
+app.use(auth)
+```
+
+#### The Axios Interceptors
+
+The axios interceptors helps appending auth information to requests and responses of APIs.
+
+The main interceptor adds the `Authorization` header with a value of `Bearer the-token-value` to all authenticated requests.
+
+This can be configured and disabled in the `createAuth` options:
+
+```ts
+// api/axios.ts
+import axios from 'axios'
+
+const axiosInstance = axios.create()
+export default axiosInstance
+```
+
+```ts
+// main.ts
+import '@/assets/scss/app.scss'
+import { createApp } from 'vue'
+import { createAuth } from './auth'
+import App from './App.vue'
+import router from './router'
+import axiosInstance from './api/axios'
+
+const auth = createAuth({
+  router,
+  axios: {
+    instance: axiosInstance,
+    autoAddAuthorizationHeader: true, // default: false
+    authorizationHeaderPrefix: 'Token', // default: 'Bearer'
+  },
+})
+
+const app = createApp(App)
+app.use(router)
+app.use(auth)
+```
+
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) + [Eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)

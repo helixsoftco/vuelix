@@ -1,3 +1,8 @@
+<route lang="yaml">
+meta:
+  public: true
+</route>
+
 <script setup lang="ts">
 import HelloWorld from '@/components/HelloWorld.vue'
 import { ref, watch } from 'vue'
@@ -27,4 +32,6 @@ watch(
   <router-link :to="{ name: 'about', query: { likes: Math.floor(Math.random() * 100) } }">
     To About with different query parameter
   </router-link>
+  <br />
+  <router-link :to="{ name: 'profile' }">To Profile</router-link>
 </template>
