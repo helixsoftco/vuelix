@@ -323,7 +323,8 @@ const auth = createAuth({
   router,
   axios: {
     instance: axiosInstance,
-    autoAddAuthorizationHeader: true, // false by default
+    autoAddAuthorizationHeader: true, // default: false
+    authorizationHeaderPrefix: 'Token', // default: 'Bearer'
   },
 })
 
