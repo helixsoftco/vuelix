@@ -12,8 +12,7 @@ let auth = useAuth()
 
   <p>
     <span v-if="auth.isAuthenticated">
-      Authenticated as <b>{{ auth.user.email }}</b
-      >&nbsp;
+      Authenticated as <b style="margin-right: 5px">{{ auth.user.email }}</b>
       <button @click="auth.logout">Logout</button>
     </span>
     <b v-else>Not Authenticated</b>
