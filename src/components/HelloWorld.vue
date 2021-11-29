@@ -23,7 +23,7 @@ watchEffect(() => {
   </p>
 
   <p>
-    <button type="button" @click="count++"><i-mdi-thumb-up /> Likes for this template: {{ count }}</button>
+    <button class="btn btn-primary" @click="count++"><i-mdi-thumb-up /> Likes for this template: {{ count }}</button>
   </p>
 </template>
 

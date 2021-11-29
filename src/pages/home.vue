@@ -31,7 +31,7 @@ async function testOpenAPI() {
   <router-link :to="{ name: 'index' }">To Index</router-link>
 
   <div>
-    <button @click="testOpenAPI()">Test OpenAPI</button>
+    <button class="btn btn-primary my-3" @click="testOpenAPI()">Test OpenAPI</button>
     <h5 v-if="loading">Loading!</h5>
     <div v-if="pets">
       <h5>Result:</h5>
