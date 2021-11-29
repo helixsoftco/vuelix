@@ -1,13 +1,26 @@
 # Vue 3 + Typescript + Vite
 
-This template should help get you started developing with Vue 3 and Typescript in Vite.
+## Setup
+
+Install Dependencies
+
+```
+npm install
+```
+
+Generate API client
+
+```
+npm run gen-api
+```
 
 ## Features
 
 ### 🚀 Vue 3 + Vite 2
 
-The version 3 of Vue with its powerful **Composition API** is available in this project,
-along with the new `<script setup>` SFCs syntax.
+The version 3 of Vue with its powerful **Composition API** is available in this project.
+
+The new `<script setup>` SFCs syntax is also available and recommended.
 
 Vite is the lightning Fast Next Generation Frontend Tooling that highly improves the development experience along with
 all the community-created plugins.
