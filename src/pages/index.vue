@@ -8,9 +8,11 @@ meta:
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import HelloWorld from '@/components/HelloWorld.vue'
 import { useAuth } from '@/auth'
+import { useI18n } from 'vue-i18n'
 
 // Composition API example
 let auth = useAuth()
+const { t, locale, availableLocales } = useI18n()
 </script>
 
 <template>
@@ -26,9 +28,20 @@ let auth = useAuth()
   <p class="mb-0 mt-4">[Default Layout]</p>
   <p>
     <span v-if="auth.isAuthenticated">
-      Authenticated as <b style="margin-right: 5px">{{ auth.user.email }}</b>
+      <i18n-t keypath="Authenticated as {user}">
+        <template #user>
+          <b class="me-2">{{ auth.user.email }}</b>
+        </template>
+      </i18n-t>
       <button @click="auth.logout">Logout</button>
     </span>
-    <b v-else>Not Authenticated</b>
+    <b v-else>{{ t('Not Authenticated') }}</b>
+  </p>
+
+  <p>
+    {{ t('Change Language') }}:
+    <select v-model="locale">
+      <option v-for="code in availableLocales" :key="code" :value="code">{{ code }}</option>
+    </select>
   </p>
 </template>

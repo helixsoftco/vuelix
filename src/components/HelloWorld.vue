@@ -17,13 +17,20 @@ watchEffect(() => {
   <p>{{ msg }}</p>
 
   <p>
-    <a href="https://helixsoft.com.co" target="_blank"> Helix Software </a>
+    <a href="https://helixsoft.com.co" target="_blank">Helix Software</a>
     |
     <a href="https://www.instagram.com/helixsoft/" target="_blank">@helixsoft</a>
   </p>
 
   <p>
-    <button class="btn btn-primary" @click="count++"><i-mdi-thumb-up /> Likes for this template: {{ count }}</button>
+    <button class="btn btn-primary" @click="count++">
+      <i-mdi-thumb-up />
+      {{
+        $tc('This template has no likes | This template has one like | This template has {likes} likes', count, {
+          likes: count,
+        })
+      }}
+    </button>
   </p>
 </template>
 
