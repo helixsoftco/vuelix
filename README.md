@@ -5,6 +5,7 @@ Vuelix is a Vue 3 + Vite starter template to scaffold new projects really fast a
 ## Table of contents
 
 - [Setup](#setup)
+- [Build](#build)
 - [Features](#features)
   - [🚀 Vue 3 + Vite 2](#-vue-3--vite-2)
   - [🦾 TypeScript and SCSS](#-typescript-and-scss)
@@ -40,6 +41,26 @@ npm run gen-api
 
 > **NOTE:** This command requires a java `jvm` to be installed, if you want to avoid asking all developers to install it
 > check [OpenAPI Client Generator](#-openapi-client-generator) for more info.
+
+Start the development server
+
+```
+npm run dev
+```
+
+## Build
+
+To build the app, run
+
+```
+npm run build
+```
+
+And to preview it, after building the app run
+
+```
+npm run serve
+```
 
 ## Features
 
