@@ -1,6 +1,6 @@
 {
-  "name": "shell-inspection-management",
-  "version": "0.0.0",
+  "name": "vuelix",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "npm run gen-api && vue-tsc --noEmit && vite build",

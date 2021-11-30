@@ -1,4 +1,28 @@
-# Vue 3 + Typescript + Vite
+# Vuelix
+
+Vuelix is a Vue 3 + Vite starter template to scaffold new projects really fast and with a great developer experience.
+
+## Table of contents
+
+- [Setup](#setup)
+- [Features](#features)
+  - [🚀 Vue 3 + Vite 2](#---vue-3---vite-2)
+  - [🦾 TypeScript and SCSS](#---typescript-and-scss)
+  - [🗂 File system routing](#---file-system-routing)
+  - [📑 Layouts system](#---layouts-system)
+  - [🔗 Path Aliasing](#---path-aliasing)
+  - [😃 Universal Icons Framework](#---universal-icons-framework)
+  - [✨ Routes Transitions](#--routes-transitions)
+  - [🪄 Eslint + Prettier](#---eslint---prettier)
+  - [🔧 OpenAPI Client Generator](#---openapi-client-generator)
+  - [👤 Authentication System](#---authentication-system)
+    - [The Auth Plugin](#the-auth-plugin)
+    - [The Navigation Guards](#the-navigation-guards)
+    - [The Axios Interceptors](#the-axios-interceptors)
+  - [🌐 Internationalization: vue-i18n and vue-i18n-extract](#---internationalization--vue-i18n-and-vue-i18n-extract)
+- [Recommended IDE Setup](#recommended-ide-setup)
+- [Deployment](#deployment)
+  - [Heroku](#heroku)
 
 ## Setup
 
@@ -14,6 +38,8 @@ Generate API client
 npm run gen-api
 ```
 
+> **NOTE:** This command requires a java `jvm` to be installed, if you want to avoid it for all developers check [OpenAPI Client Generator](#---openapi-client-generator) for more info.
+
 ## Features
 
 ### 🚀 Vue 3 + Vite 2
@@ -25,7 +51,7 @@ The new `<script setup>` SFCs syntax is also available and recommended.
 Vite is the lightning Fast Next Generation Frontend Tooling that highly improves the development experience along with
 all the community-created plugins.
 
-> _NOTE:_ The initial state of this project was generated using Vite oficial scaffolding: `npm init vite@latest`
+> **NOTE:** The initial state of this project was generated using Vite oficial scaffolding: `npm init vite@latest`
 
 See:
 
@@ -52,7 +78,7 @@ See:
 
 ### 📑 Layouts system
 
-Vue components in the `src/layouts` dir as used as layouts.
+Vue components in the `src/layouts` dir are used as layouts.
 By default, `default.vue` will be used unless an alternative is specified in the route meta.
 
 You can specify the layout in the page's SFCs like this:
@@ -158,7 +184,7 @@ See:
 - [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
 - [vue-eslint-parser](https://github.com/vuejs/vue-eslint-parser)
 
-### ⚙️ OpenAPI Client Generator
+### 🔧 OpenAPI Client Generator
 
 Manually creating an API client is hard to maintain and time demanding,
 but thanks to OpenAPI and its generators we can now generate the entire API client from an `OpenAPI Spec`.
@@ -169,10 +195,15 @@ To do so just place your spec in `spec/schema.yml`, then run:
 npm run gen-api
 ```
 
-> _NOTE:_ `Java` is required to be installed for the OpenAPI generator to work
+Which would generate the API client in Typescript and place the generated code in `src/api-client`.
 
-This would generate the API client in Typescript, so you will also get type hints and autocompletion in VSCode.
-The generated code is placed in `src/api-client`, that directory is ignored in GIT, because it can be generated always from the spec (`spec/schema.yml`), and it's not required to have it versioned.
+> **NOTE:** This command requires `java` to be installed, because the OpenAPI generator is built with it, if you
+> want to avoid asking all developers to install a `jvm` and run this command by themselves, just run it once you change
+> the OpenAPI spec, and commit the generated code, for that you need to remove the `/src/api-client` line from the `.gitignore`.
+> The reason we exclude the generated client by default if because it can always be generated from the spec (`spec/schema.yml`), and because
+> the spec file is actually versioned, then the code reviewing is improved by checking only spec changes and not the generated code that nobody wrotes.
+
+> **INFO:** If you have a Mac with an M1 Chip, this page have the correct `OpenJDK` installers for you: https://www.azul.com/downloads/?os=macos&architecture=arm-64-bit
 
 To use the generated APIs just initialize them and make it available for the rest of the application.
 The following is an example using Swagger Demo PetStore API:
@@ -221,6 +252,7 @@ See:
 
 - [OpenAPI Specification](https://swagger.io/docs/specification/about/)
 - [OpenAPI Generator](https://openapi-generator.tech/)
+- [OpenAPI Generator CLI](https://github.com/openapitools/openapi-generator-cli)
 - [OpenAPI typescript-axios generator](https://openapi-generator.tech/docs/generators/typescript-axios)
 
 ### 👤 Authentication System
@@ -458,10 +490,6 @@ See:
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) + [Eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-
-## Type Support For `.vue` Imports in TS
-
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
 
 ## Deployment
 
