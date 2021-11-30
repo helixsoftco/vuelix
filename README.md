@@ -6,20 +6,20 @@ Vuelix is a Vue 3 + Vite starter template to scaffold new projects really fast a
 
 - [Setup](#setup)
 - [Features](#features)
-  - [🚀 Vue 3 + Vite 2](#---vue-3---vite-2)
-  - [🦾 TypeScript and SCSS](#---typescript-and-scss)
-  - [🗂 File system routing](#---file-system-routing)
-  - [📑 Layouts system](#---layouts-system)
-  - [🔗 Path Aliasing](#---path-aliasing)
-  - [😃 Universal Icons Framework](#---universal-icons-framework)
-  - [✨ Routes Transitions](#--routes-transitions)
-  - [🪄 Eslint + Prettier](#---eslint---prettier)
-  - [🔧 OpenAPI Client Generator](#---openapi-client-generator)
-  - [👤 Authentication System](#---authentication-system)
+  - [🚀 Vue 3 + Vite 2](#-vue-3--vite-2)
+  - [🦾 TypeScript and SCSS](#-typescript-and-scss)
+  - [🗂 File system routing](#-file-system-routing)
+  - [📑 Layouts system](#-layouts-system)
+  - [🔗 Path Aliasing](#-path-aliasing)
+  - [😃 Universal Icons Framework](#-universal-icons-framework)
+  - [✨ Routes Transitions](#-routes-transitions)
+  - [🪄 Eslint + Prettier](#-eslint--prettier)
+  - [🔧 OpenAPI Client Generator](#-openapi-client-generator)
+  - [👤 Authentication System](#-authentication-system)
     - [The Auth Plugin](#the-auth-plugin)
     - [The Navigation Guards](#the-navigation-guards)
     - [The Axios Interceptors](#the-axios-interceptors)
-  - [🌐 Internationalization: vue-i18n and vue-i18n-extract](#---internationalization--vue-i18n-and-vue-i18n-extract)
+  - [🌐 Internationalization: vue-i18n and vue-i18n-extract](#-internationalization-vue-i18n-and-vue-i18n-extract)
 - [Recommended IDE Setup](#recommended-ide-setup)
 - [Deployment](#deployment)
   - [Heroku](#heroku)
@@ -416,7 +416,7 @@ and bind it to the attribute. -->
 
 You may have noticed that we don't use translations keys like: `greetings.hello`, the reason is that defining keys is a troublesome task, and keys doesn't always show what we want to display, take this translation file for example:
 
-```json
+```js
 // es.json
 
 {
@@ -426,9 +426,17 @@ You may have noticed that we don't use translations keys like: `greetings.hello`
 }
 ```
 
+And the corresponding translation usage:
+
+```js
+// Component.vue
+
+t('greetings.hello')
+```
+
 By just looking at the translation key, we won't know what the original text was, now look a this example:
 
-```json
+```js
 // es.json
 
 {
@@ -436,7 +444,13 @@ By just looking at the translation key, we won't know what the original text was
 }
 ```
 
-Better right?, we can directly see the original text, and it's much simpler to translate, we also won't need to define keys because **the original text is the key**.
+```js
+// Component.vue
+
+$t('Hello, how are you?')
+```
+
+Better right?, we can directly see the original text, and it's much simpler to translate, we also won't need to define keys because **the original text is the key!**.
 
 **Browser language detection**
 
@@ -465,10 +479,11 @@ To add a new language, for instance the German language, just create its file in
 
 Example:
 
-```json
+```js
 // locales/es.json
 
-{}
+{
+}
 ```
 
 The file would be loaded automatically by `vite`, a vite restart may be needed.
@@ -477,7 +492,7 @@ The file would be loaded automatically by `vite`, a vite restart may be needed.
 
 In case you want to remove the keys that are in the translation files but are not being used in the vue files, you can run:
 
-```json
+```
 npm run vue-i18n-extract-remove
 ```
 
