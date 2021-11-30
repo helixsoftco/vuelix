@@ -352,6 +352,109 @@ See:
 - [Axios - Interceptors](https://github.com/axios/axios#interceptors)
 - [Vue Devtools - Plugin Registration](https://devtools.vuejs.org/plugin/plugins-guide.html#registering-your-plugin)
 
+### 🌐 Internationalization: vue-i18n and vue-i18n-extract
+
+The `vue-i18n` package is used as the internationalization system.
+
+All translation files located in the `locales` dir are loaded automatically with the corresponding language code obtained from the file name, e.g. `locales/es.json` -> lang code: `es`.
+
+**How to use it?**
+
+Put the texts in the original language inside the function of vue-i18n, for example:
+
+```html
+<!-- Single or double quote, and template literals -->
+<p>{{ $t('Hello World') }} {{ $t("Hello, how are you?") }} {{ $t(`Hey. I'm watching you!`) }}</p>
+
+<!-- *Note: to be able to use it in tags or when we send text to a component, we must use the single quote format
+and bind it to the attribute. -->
+
+<MyComponent :text="$t('example text')" />
+
+<b-form-input v-model="name" type="text" :placeholder="$t('Name')"></b-form-input>
+
+// In TS:
+<script setup lang="ts">
+  import { useI18n } from 'vue-i18n'
+
+  const { t } = useI18n()
+  t('This is an example')
+</script>
+```
+
+You may have noticed that we don't use translations keys like: `greetings.hello`, the reason is that defining keys is a troublesome task, and keys doesn't always show what we want to display, take this translation file for example:
+
+```json
+// es.json
+
+{
+  "greetings": {
+    "hello": "Hola, ¿cómo estás?."
+  }
+}
+```
+
+By just looking at the translation key, we won't know what the original text was, now look a this example:
+
+```json
+// es.json
+
+{
+  "Hello, how are you?": "Hola, ¿cómo estás?."
+}
+```
+
+Better right?, we can directly see the original text, and it's much simpler to translate, we also won't need to define keys because **the original text is the key**.
+
+**Browser language detection**
+
+The default language would match the language of the browser,
+in case the language is not supported by the application, the fallback language `en` would be activated.
+
+**Vue i18n extract**
+
+Manually extracting the texts from vue or js,ts files is a complex task, we are often lazy to do so or we forget to add them, therefore we lose the sync between the translations files and the source code, that's why we use `vue-i18n-extract`, a handy tool that runs static analysis of the source code files and extracts the translation texts from the source code and add them to the translations files like `es.json`, `en.json`, `de.json`, etc. It no only adds the missing keys but also with a command we can remove the no longer used translations.
+
+To extract the keys/original text into the translations files, run:
+
+```
+npm run vue-i18n-extract
+```
+
+This executes the command located in `package.json`, which will search for the keys in the vue files given, compare it with the files inside the lang folder and if it finds new words, it will add them.
+
+This script uses the [vue-i18n-extract.config.js](./vue-i18n-extract.config.js) file for its configuration. This file is located in the root of the project.
+
+**Adding a new language:**
+
+To add a new language, for instance the German language, just create its file inside the `locales` folder using its language code, example: `./locales/de.json`. Then run `npm run vue-i18n-extract` to populate the translation keys into that file.
+
+> _IMPORTANT_: When creating the file, make it a valid JSON file, then at least it must has `{}`, otherwise the extraction would fail.
+
+Example:
+
+```json
+// locales/es.json
+
+{}
+```
+
+The file would be loaded automatically by `vite`, a vite restart may be needed.
+
+**Removing unused translations**
+
+In case you want to remove the keys that are in the translation files but are not being used in the vue files, you can run:
+
+```json
+npm run vue-i18n-extract-remove
+```
+
+See:
+
+- [Vue i18n](https://vue-i18n.intlify.dev/)
+- [Vue i18n extract](https://github.com/pixari/vue-i18n-extract)
+- [i18n plugin](./src/plugins/i18n.ts)
+
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) + [Eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
