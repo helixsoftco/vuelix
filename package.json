@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "npm run gen-api && vue-tsc --noEmit && vite build",
     "serve": "vite preview",
     "type-check": "vue-tsc --noEmit",
     "eslint": "npx eslint --ignore-path .prettierignore --ext .ts,.js,.vue .",
