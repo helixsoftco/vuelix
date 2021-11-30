@@ -38,7 +38,8 @@ Generate API client
 npm run gen-api
 ```
 
-> **NOTE:** This command requires a java `jvm` to be installed, if you want to avoid it for all developers check [OpenAPI Client Generator](#---openapi-client-generator) for more info.
+> **NOTE:** This command requires a java `jvm` to be installed, if you want to avoid asking all developers to install it
+> check [OpenAPI Client Generator](#-openapi-client-generator) for more info.
 
 ## Features
 
