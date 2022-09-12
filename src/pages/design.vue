@@ -7,10 +7,17 @@ meta:
 
 <script setup lang="ts">
 import useToasts from '@/composables/useToasts'
+import { ref } from 'vue'
+import SelectSimple from '../components/forms/selectSimple.vue'
 
 const { addToast, addDefaultToast } = useToasts()
 const numbers = [1, 2, 3, 4, 5, 6]
 const colors = ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'light', 'dark', 'white']
+const selectedOption = ref()
+const selectOptions = [
+  { value: '1', name: 'Car' },
+  { value: '2', name: 'Bike' },
+]
 
 function exampleToast(variant: string, text: string) {
   switch (variant) {
@@ -242,6 +249,35 @@ function exampleToast(variant: string, text: string) {
             <button class="btn btn-primary" @click="exampleToast('Custom ', 'Toast with a duration of 10 seconds')">
               Custom Example
             </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h1 class="mt-5">Select simple</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Component</th>
+          <th scope="col">Props</th>
+          <th scope="col">Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" class="align-middle">
+            {{ '<SelectSimple v-model="selectedOption" bg="secondary" text-color="white" :options="selectOptions" />'}}
+          </th>
+          <td class="text-start">
+            <div>v-model: Ref</div>
+            <div>options: Array{{ '<{ name: string; value: string }>' }}</div>
+            <div>placeholder?: string</div>
+            <div>bg?: Bootstrap Variant</div>
+            <div>textColor?: Bootstrap Variant</div>
+            <div>enableAllOption?: boolean</div>
+          </td>
+          <td>
+            <SelectSimple v-model="selectedOption" bg="secondary" text-color="white" :options="selectOptions" />
           </td>
         </tr>
       </tbody>
