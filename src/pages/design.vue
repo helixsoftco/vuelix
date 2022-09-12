@@ -266,7 +266,7 @@ function exampleToast(variant: string, text: string) {
       <tbody>
         <tr>
           <th scope="row" class="align-middle">
-            {{ '<SelectSimple v-model="selectedOption" :options="selectOptions" />'}}
+            {{ '<SelectSimple v-model="selectedOption" :options="selectOptions" text-color="primary" />'}}
           </th>
           <td class="text-start">
             <div>v-model: Ref</div>
@@ -277,7 +277,7 @@ function exampleToast(variant: string, text: string) {
             <div>enableAllOption?: boolean</div>
           </td>
           <td>
-            <SelectSimple v-model="selectedOption" :options="selectOptions" />
+            <SelectSimple v-model="selectedOption" :options="selectOptions" text-color="primary" />
           </td>
         </tr>
       </tbody>
