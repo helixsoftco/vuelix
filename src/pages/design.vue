@@ -7,10 +7,19 @@ meta:
 
 <script setup lang="ts">
 import useToasts from '@/composables/useToasts'
+import { ref } from 'vue'
+import SelectSimple from '@/components/forms/SelectSimple.vue'
+import SelectMultiple from '@/components/forms/SelectMultiple.vue'
 
 const { addToast, addDefaultToast } = useToasts()
 const numbers = [1, 2, 3, 4, 5, 6]
 const colors = ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'light', 'dark', 'white']
+const selectedSimpleOption = ref()
+const selectedMultipleOptions = ref([])
+const selectOptions = [
+  { value: '1', name: 'Car' },
+  { value: '2', name: 'Bike' },
+]
 
 function exampleToast(variant: string, text: string) {
   switch (variant) {
@@ -242,6 +251,61 @@ function exampleToast(variant: string, text: string) {
             <button class="btn btn-primary" @click="exampleToast('Custom ', 'Toast with a duration of 10 seconds')">
               Custom Example
             </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h1 class="mt-5">Select simple</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Component</th>
+          <th scope="col">Props</th>
+          <th scope="col">Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" class="align-middle">
+            {{ '<SelectSimple v-model="selectedOption" :options="selectOptions" text-color="primary" />'}}
+          </th>
+          <td class="text-start">
+            <div>v-model: Ref()</div>
+            <div>options: Array{{ '<{ name: string; value: string }>' }}</div>
+            <div>placeholder?: string</div>
+            <div>bg?: Bootstrap Variant</div>
+            <div>textColor?: Bootstrap Variant</div>
+            <div>enableAllOption?: boolean</div>
+          </td>
+          <td>
+            <SelectSimple v-model="selectedSimpleOption" :options="selectOptions" text-color="primary" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h1 class="mt-5">Select multiple</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Component</th>
+          <th scope="col">Props</th>
+          <th scope="col">Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" class="align-middle">
+            {{ '<SelectMultiple v-model="selectedMultipleOptions" :options="selectOptions" />'}}
+          </th>
+          <td class="text-start">
+            <div>v-model: Ref([])</div>
+            <div>options: Array{{ '<{ name: string; value: string }>' }}</div>
+            <div>required?: boolean</div>
+          </td>
+          <td>
+            <SelectMultiple v-model="selectedMultipleOptions" :options="selectOptions" />
           </td>
         </tr>
       </tbody>
