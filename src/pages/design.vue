@@ -8,7 +8,7 @@ meta:
 <script setup lang="ts">
 import useToasts from '@/composables/useToasts'
 import { ref } from 'vue'
-import SelectSimple from '../components/forms/selectSimple.vue'
+import SelectSimple from '@/components/forms/SelectSimple.vue'
 
 const { addToast, addDefaultToast } = useToasts()
 const numbers = [1, 2, 3, 4, 5, 6]
