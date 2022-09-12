@@ -1,9 +1,9 @@
+import { BSVariant } from '@/plugins/consts'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const DEFAULT_TIMEOUT = 5000
 
-type BSVariant = 'primary' | 'secondary' | 'danger' | 'warning' | 'success' | 'info'
 type DefaultVariants = 'danger' | 'success'
 export interface ToastOptions {
   id?: string

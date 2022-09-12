@@ -1,0 +1,21 @@
+.field-select {
+  position: relative;
+
+  &__icon {
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+  }
+
+  &__arrow {
+    position: absolute;
+    pointer-events: none;
+    right: 0;
+  }
+
+  &__simple-select {
+    position: relative;
+    background: transparent;
+    min-width: 140px;
+  }
+}
