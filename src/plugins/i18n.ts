@@ -34,7 +34,7 @@ const messages = getMessages()
 const i18n = createI18n({
   locale: Object.keys(messages).includes(BROWSER_LANGUAGE) ? BROWSER_LANGUAGE : DEFAULT_LANGUAGE,
   fallbackLocale: DEFAULT_LANGUAGE,
-  legacy: true, // Enables $t(), $tc(), etc in templates
+  legacy: false, // Even though legacy mode is disabled, you can still use $t() in templates, but $tc() is not permitted. Be careful, if you set this on true or erase this parameter, the application could fail
   messages,
 })
 
