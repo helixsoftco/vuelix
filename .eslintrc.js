@@ -9,6 +9,7 @@ module.exports = {
     defineProps: 'readonly',
     defineEmits: 'readonly',
     withDefaults: 'readonly',
+    defineExpose: 'readonly',
   },
   // The "prettier" extend comes from 'eslint-config-prettier' which disables eslint rules that may conflict with prettier
   // Using vue3 recommended rules, See: https://eslint.vuejs.org/rules/#priority-c-recommended-minimizing-arbitrary-choices-and-cognitive-overhead-for-vue-js-3-x
