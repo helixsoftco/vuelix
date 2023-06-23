@@ -474,6 +474,8 @@ $t('Hello, how are you?')
 
 Better right?, we can directly see the original text, and it's much simpler to translate, we also won't need to define keys because **the original text is the key!**.
 
+> **NOTE:** After migrate vueI18n version from `9.2.0-beta.30` to `9.2.2` (stable), the i18n of the App do not work with legacy parameter set true of without it, only works if it is set false, so, you could ask 'This will make that my project fails with legacy translations?' the answer is NO!. Though legacy parameter is set false, you can use $t() translation mode, but you can not use $tc() translation mode. So, if you have some $tc() translation, we recomment use the useI18n composable on script setup and use t() translation mode.
+
 **Browser language detection**
 
 The default language would match the language of the browser,

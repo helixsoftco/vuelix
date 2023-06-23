@@ -11,7 +11,15 @@ watchEffect(() => {
 </script>
 
 <template>
-  <img alt="Vue logo" src="@/assets/logo.png" style="height: 200px" />
+  <img
+    alt="Vue logo"
+    src="@/assets/logo.png"
+    style="
+       {
+        height: 200px;
+      }
+    "
+  />
 
   <h1>{{ title }}</h1>
   <p>{{ msg }}</p>
@@ -25,11 +33,7 @@ watchEffect(() => {
   <p>
     <button class="btn btn-primary" @click="count++">
       <i-mdi-thumb-up />
-      {{
-        $tc('This template has no likes | This template has one like | This template has {likes} likes', count, {
-          likes: count,
-        })
-      }}
+      {{ $t('This template has no likes | This template has one like | This template has {likes} likes', count) }}
     </button>
   </p>
 </template>
