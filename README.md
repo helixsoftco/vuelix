@@ -1,6 +1,6 @@
 # Vuelix
 
-Vuelix is a Vue 3 + Vite starter template to scaffold new projects really fast and with a great developer experience.
+Vuelix is a Vue 3 + Vite starter template to scaffold new projects really fast, with OpenAPI Client Generation and with a great developer experience.
 
 ## Table of contents
 
@@ -14,7 +14,7 @@ Vuelix is a Vue 3 + Vite starter template to scaffold new projects really fast a
   - [🔗 Path Aliasing](#-path-aliasing)
   - [😃 Universal Icons Framework](#-universal-icons-framework)
   - [✨ Routes Transitions](#-routes-transitions)
-  - [🪄 Eslint + Prettier](#-eslint--prettier)
+  - [🪄 ESLint + Prettier](#-eslint--prettier)
   - [🔧 OpenAPI Client Generator](#-openapi-client-generator)
   - [👤 Authentication System](#-authentication-system)
     - [The Auth Plugin](#the-auth-plugin)
@@ -187,20 +187,20 @@ See:
 
 - [RouterViewTransition.vue](./src/components/RouterViewTransition.vue)
 
-### 🪄 Eslint + Prettier
+### 🪄 ESLint + Prettier
 
-This project comes with the recommended Eslint configuration for Vue 3 plus integration with Prettier.
-Prettier helps formatting code while Eslint helps catching bugs in development.
+This project comes with the recommended ESLint configuration for Vue 3 plus integration with Prettier.
+Prettier helps formatting code while ESLint helps catching bugs in development.
 
-When opening the project in VSCode, it will ask the developers to install Eslint and Prettier, because that way
-the VSCode [settings.json](.vscode/settings.json) will work and therefore both Prettier and Eslint fix will be
+When opening the project in VSCode, it will ask the developers to install ESLint and Prettier, because that way
+the VSCode [settings.json](.vscode/settings.json) will work and therefore both Prettier and ESLint fix will be
 executed when saving a file.
 
 Aditionally, commands to lint, check and autoformat code are available in the scripts of [package.json](./package.json)
 
 See:
 
-- [Eslint](https://eslint.org/)
+- [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/docs/en/comparison.html)
 - [eslint-plugin-vue](https://eslint.vuejs.org/)
 - [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
