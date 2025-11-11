@@ -7,10 +7,13 @@ meta:
 
 <script setup lang="ts">
 import useToasts from '@/composables/useToasts'
+import Pagination from '@/components/Pagination.vue'
+import { ref } from 'vue'
 
 const { addToast, addDefaultToast } = useToasts()
 const numbers = [1, 2, 3, 4, 5, 6]
 const colors = ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'light', 'dark', 'white']
+const currentPage = ref(1)
 
 function exampleToast(variant: string, text: string) {
   switch (variant) {
@@ -242,6 +245,26 @@ function exampleToast(variant: string, text: string) {
             <button class="btn btn-primary" @click="exampleToast('Custom ', 'Toast with a duration of 10 seconds')">
               Custom Example
             </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h1 class="mt-5">Pagination</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Component</th>
+          <th scope="col">Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" class="align-middle">
+            {{ '<Pagination v-model="currentPage" :loading="false" :total-pages="5" />'}}
+          </th>
+          <td>
+            <Pagination v-model="currentPage" :total-pages="5" />
           </td>
         </tr>
       </tbody>
